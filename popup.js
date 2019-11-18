@@ -5,7 +5,7 @@ var bkg = chrome.extension.getBackgroundPage();
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d');
 var width = 200
-var height = 300
+var height = 200
 var fontFamily = "Arial"
 var fontSize = "15px"
 
@@ -39,7 +39,6 @@ function fragmentText(text, maxWidth) {
 	return lines;
 }
 
-
 document.getElementById('inp').addEventListener('keyup', (event) => {
 	let memeText = event.target.value.split('').map(function(v) {
     var chance = Math.round(Math.random());
@@ -57,6 +56,7 @@ document.getElementById('inp').addEventListener('keyup', (event) => {
 		ctx.restore();
 		document.getElementById('dis_img').src = canvas.toDataURL();
 		document.getElementById('dis_img').style.display = "block";
+		document.getElementById('help_text').style.display = "block";
   };
   imageObj.src = "./meme.jpg"; 
 });
