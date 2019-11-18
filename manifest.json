@@ -1,0 +1,21 @@
+{
+  "name": "Spongebob Memeifier",
+  "description": "Create a spongebob meme to mock your friends!",
+  "version": "1.0",
+  "manifest_version": 2,
+  "permissions": ["alarms", "notifications", "storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Spongebob Memeifier",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "spongebob16.png",
+    "32": "spongebob32.png",
+    "48": "spongebob48.png",
+    "128": "spongebob128.png"
+  }
+}
