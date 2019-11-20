@@ -1,7 +1,7 @@
 {
   "name": "Spongebob Memer",
   "description": "Create a spongebob meme to mock your friends!",
-  "version": "1.1",
+  "version": "1.2",
   "manifest_version": 2,
   "permissions": ["alarms", "notifications", "storage"],
   "background": {
