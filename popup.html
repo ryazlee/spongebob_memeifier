@@ -2,14 +2,14 @@
   <head>
     <title>Spongebob Memeifier</title>
   </head>
-  <body>
-    <div style="">
-      <label for="input" style="padding-bottom: 5px; text-align: center">Text to meme: </label>
-      <input class="inp" type="text" id="inp"/>
+  <body style="width: 200px">
+    <div style="padding-bottom: 5px">
+      <label for="input">Text to meme: </label>
+      <input class="input_text" type="text" id="input_text"/>
+    </div>
       <canvas id="canvas" width="200" style="display: none"></canvas>
       <img style="display: none" class='center' src='' id='dis_img'/>
-      <div style="display: none" id="help_text">Now you can drag and drop or copy and paste the above image!</div>
-      <script src="popup.js"></script>
-    </div>
+      <p style="display: none; text-align: center" id="help_text">Now you can drag/drop or copy/paste the above image!</p>
+    <script src="popup.js"></script>
   </body>
 </html>

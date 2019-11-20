@@ -1,4 +1,3 @@
-'use strict';
 // For debugging, use bkg.console.log(msg)
 var bkg = chrome.extension.getBackgroundPage();
 
@@ -9,6 +8,26 @@ var height = 200
 var fontFamily = "Arial"
 var fontSize = "15px"
 
+// On keyup, add the text to the meme pic
+document.getElementById('input_text').addEventListener('keyup', (event) => {
+	let memeText = convertToMemeText(event.target.value) 
+  var imageObj = new Image();
+  imageObj.onload = function(){
+    ctx.drawImage(imageObj, 0, 0);
+    ctx.font = "15pt Arial";
+		var lines = fragmentText(memeText, width - parseInt(fontSize));
+		lines.forEach(function(line, i) {
+        ctx.fillText(line, parseInt(fontSize)/2, (i + 1) * parseInt(fontSize,0) + 1);
+    });
+		ctx.restore();
+		document.getElementById('dis_img').src = canvas.toDataURL();
+		document.getElementById('dis_img').style.display = "block";
+		document.getElementById('help_text').style.display = "block";
+  };
+  imageObj.src = "./meme.jpg"; 
+});
+
+// Helper functions
 function fragmentText(text, maxWidth) {
 	var words = text.split(' '),
   	lines = [],
@@ -39,25 +58,12 @@ function fragmentText(text, maxWidth) {
 	return lines;
 }
 
-document.getElementById('inp').addEventListener('keyup', (event) => {
-	let memeText = event.target.value.split('').map(function(v) {
-    var chance = Math.round(Math.random());
+function convertToMemeText(text) {
+  let memeText = text.split('').map(function(v) {
+  var chance = Math.round(Math.random());
     return v = chance ? v.toUpperCase() : v.toLowerCase();
-	}).join('');
-	
-  var imageObj = new Image();
-  imageObj.onload = function(){
-    ctx.drawImage(imageObj, 0, 0);
-    ctx.font = "15pt Arial";
-		var lines = fragmentText(memeText, width - parseInt(fontSize)/2);
-		lines.forEach(function(line, i) {
-        ctx.fillText(line, parseInt(fontSize)/2, (i + 1) * parseInt(fontSize,0) + 1);
-    });
-		ctx.restore();
-		document.getElementById('dis_img').src = canvas.toDataURL();
-		document.getElementById('dis_img').style.display = "block";
-		document.getElementById('help_text').style.display = "block";
-  };
-  imageObj.src = "./meme.jpg"; 
-});
+  }).join('');
+  return memeText;
+}
+
 
